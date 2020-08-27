@@ -1,8 +1,9 @@
-set encoding=utf-8
+﻿set encoding=utf-8
 set number relativenumber
 set fileformat=dos
 syntax enable
 set noswapfile
+set bomb
 set scrolloff=7
 set backspace=indent,eol,start
 
@@ -35,3 +36,7 @@ vmap <C-/> <Plug>NERDCommenterToggle<CR>gv
 let NERDTreeQuitOnOpen=1 
 let g:NERDTreeMinimalUI=1
 nmap <C-t> :NERDTreeToggle<CR>
+
+" Tabs
+let g:airline#extensions#enabled=1
+let g:airline#extensions#fnamemode=':t'
