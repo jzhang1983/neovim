@@ -43,3 +43,6 @@ nmap <C-t> :NERDTreeToggle<CR>
 " Tabs
 let g:airline#extensions#tabline#enabled = 1
 
+" quick fix
+nmap <C-Up> :cp<CR>
+nmap <C-Down> :cn<CR>
