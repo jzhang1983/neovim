@@ -21,6 +21,9 @@ Plug 'scrooloose/nerdtree'
 Plug 'preservim/nerdcommenter'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'jremmen/vim-ripgrep'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install()  }  }
+Plug 'junegunn/fzf.vim'
 
 call plug#end()
 
@@ -38,5 +41,5 @@ let g:NERDTreeMinimalUI=1
 nmap <C-t> :NERDTreeToggle<CR>
 
 " Tabs
-let g:airline#extensions#enabled=1
-let g:airline#extensions#fnamemode=':t'
+let g:airline#extensions#tabline#enabled = 1
+
