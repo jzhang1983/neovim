@@ -25,3 +25,13 @@ call plug#end()
 
 
 colorscheme gruvbox
+let g:airline_theme='gruvbox'
+
+" NERMCommenter
+nmap <C-/> <Plug>NERDCommenterToggle
+vmap <C-/> <Plug>NERDCommenterToggle<CR>gv
+
+" NERDTree
+let NERDTreeQuitOnOpen=1 
+let g:NERDTreeMinimalUI=1
+nmap <C-t> :NERDTreeToggle<CR>
