@@ -24,6 +24,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'jremmen/vim-ripgrep'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install()  }  }
 Plug 'junegunn/fzf.vim'
+Plug 'ludovicchabant/vim-gutentags'
 
 call plug#end()
 
@@ -38,7 +39,7 @@ vmap <C-/> <Plug>NERDCommenterToggle<CR>gv
 " NERDTree
 let NERDTreeQuitOnOpen=1 
 let g:NERDTreeMinimalUI=1
-nmap <C-t> :NERDTreeToggle<CR>
+nmap <C-g> :NERDTreeToggle<CR>
 
 " Tabs
 let g:airline#extensions#tabline#enabled = 1
@@ -46,3 +47,6 @@ let g:airline#extensions#tabline#enabled = 1
 " quick fix
 nmap <C-Up> :cp<CR>
 nmap <C-Down> :cn<CR>
+
+" ripgrep
+let g:rg_command = 'rg --vimgrep -S'
