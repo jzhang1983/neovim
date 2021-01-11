@@ -1,6 +1,5 @@
 ﻿set encoding=utf-8
 set number relativenumber
-set fileformat=dos
 syntax enable
 set noswapfile
 set bomb
@@ -27,6 +26,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
 
@@ -40,14 +40,17 @@ vmap <C-/> <Plug>NERDCommenterToggle<CR>gv
 " NERDTree
 let NERDTreeQuitOnOpen=1 
 let g:NERDTreeMinimalUI=1
-nmap <C-g> :NERDTreeToggle<CR>
+nnoremap <C-g> :NERDTreeToggle<CR>
+
+" open config file
+noremap <leader>init :e ~\AppData\Local\nvim\init.vim<CR>
 
 " Tabs
 let g:airline#extensions#tabline#enabled = 1
 
 " quick fix
-nmap <C-Up> :cp<CR>
-nmap <C-Down> :cn<CR>
+nnoremap <C-Up> :cp<CR>
+nnoremap <C-Down> :cn<CR>
 
 " ripgrep
 let g:rg_command = 'rg --vimgrep -S'
@@ -58,3 +61,23 @@ let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
+
+" ripgrep operator
+noremap <leader>g :set operatorfunc=<SID>RipGrepOperator<cr>g@
+vnoremap <leader>g :<c-u>call <SID>RipGrepOperator(visualmode())<cr>
+
+function! s:RipGrepOperator(type)
+   let saved_unnamed_register = @@
+   if a:type ==# 'v'
+       execute "normal! `<v`>y"
+   elseif a:type ==# 'char'
+       execute "normal! `[v`]y"
+   else
+       return
+   endif
+   
+   silent execute "Rg " . shellescape(@@)
+   copen
+
+   let @@ = saved_unnamed_register
+endfunction
